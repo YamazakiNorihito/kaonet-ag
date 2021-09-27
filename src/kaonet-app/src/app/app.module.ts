@@ -11,7 +11,9 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { IndexModule } from './index/index.module'
 import { SharedModule } from './shared/shared.module'
-
+import { CommonModule } from '@angular/common';
+import { NormalnavComponent } from './header/normalnav/normalnav.component';
+import { HeaderModule } from './header/header.module'
 
 @NgModule({
   declarations: [
@@ -20,12 +22,14 @@ import { SharedModule } from './shared/shared.module'
   imports: [
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule,
     BrowserModule,
+    FormsModule,
+    CommonModule,
     RouterModule,
     AppRoutingModule,
     IndexModule,
-    SharedModule
+    HeaderModule,
+    //SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

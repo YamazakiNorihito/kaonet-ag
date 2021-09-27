@@ -20,10 +20,6 @@ import { PopoverModule } from "ngx-bootstrap/popover";
 @NgModule({
   declarations: [],
   imports: [
-    BrowserModule,
-    FormsModule,
-    CommonModule,
-    RouterModule,
     BsDropdownModule.forRoot(),
     ProgressbarModule.forRoot(),
     TooltipModule.forRoot(),
@@ -38,10 +34,6 @@ import { PopoverModule } from "ngx-bootstrap/popover";
     ModalModule.forRoot()
   ],
   exports: [
-    BrowserModule,
-    FormsModule,
-    CommonModule,
-    RouterModule,
     BsDropdownModule,
     ProgressbarModule,
     TooltipModule,
