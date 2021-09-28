@@ -6,3 +6,4 @@ RUN npm install -g @angular/cli@12.2.5
 WORKDIR /src
 
 EXPOSE 4200
+EXPOSE 3001

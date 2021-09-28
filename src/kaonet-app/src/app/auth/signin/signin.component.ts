@@ -1,4 +1,8 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-signin',
@@ -13,7 +17,7 @@ export class SigninComponent implements OnInit, OnDestroy {
   focus1: boolean = false;
   focus2: boolean = false;
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -86,6 +90,27 @@ export class SigninComponent implements OnInit, OnDestroy {
       "deg) rotateX(" +
       posY * -0.02 +
       "deg)";
+  }
+
+  signin(form: NgForm): void {
+    console.log('sigin component S')
+
+    let { email, passwd } = form.value;
+    this.authService.signin(email, passwd).subscribe(
+      result => {
+        // Handle result
+        console.log(result);
+        this.router.navigateByUrl('/');
+      },
+      error => {
+        console.log(error)
+      },
+      () => {
+        // 'onCompleted' callback.
+        // No errors, route to new page here
+      }
+    )
+    console.log('sigin component E')
   }
 
 }
