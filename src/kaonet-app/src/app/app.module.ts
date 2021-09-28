@@ -13,7 +13,8 @@ import { IndexModule } from './index/index.module'
 import { SharedModule } from './shared/shared.module'
 import { CommonModule } from '@angular/common';
 import { NormalnavComponent } from './header/normalnav/normalnav.component';
-import { HeaderModule } from './header/header.module'
+import { HeaderModule } from './header/header.module';
+import { FooterModule } from './footer/footer.module'
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HeaderModule } from './header/header.module'
     AppRoutingModule,
     IndexModule,
     HeaderModule,
+    FooterModule,
     //SharedModule,
   ],
   providers: [],
