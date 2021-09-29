@@ -95,13 +95,10 @@ export class SigninComponent implements OnInit, OnDestroy {
   }
 
   signin(form: NgForm): void {
-    console.log('sigin component S')
     this.valid = false;
     let { email, passwd } = form.value;
     this.authService.signin(email, passwd).subscribe(
       result => {
-        // Handle result
-        //console.log(result);
         this.router.navigateByUrl('/');
       },
       error => {
@@ -113,7 +110,6 @@ export class SigninComponent implements OnInit, OnDestroy {
         // No errors, route to new page here
       }
     )
-    console.log('sigin component E')
   }
 
 }

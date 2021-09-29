@@ -5,12 +5,20 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 import * as moment from 'moment';
 import { environment } from '../../environments/environment'
+import { JwtHelperService } from '@auth0/angular-jwt';
+
+const jwtHelpService = new JwtHelperService();
 
 class AuthLink {
+  idToken: String = ''
+  refreshToken: String = ''
+  expiresIn: number = 0
+}
+
+class User {
   name: String = ''
-  user_id: String = ''
-  exp: number = 0
   email: String = ''
+  exp: number = 0
 }
 
 @Injectable({
@@ -19,18 +27,20 @@ class AuthLink {
 export class AuthService {
 
   authLink: AuthLink
+  user: User
 
   private readonly localStorageKey: string = 'kaonet-auth'
 
   private apiurl: string = environment.apiUrl
-  //private apiurl: string = '/api/'
 
   constructor(private http: HttpClient, private router: Router) {
     let authtoken = localStorage.getItem(this.localStorageKey);
     if (!authtoken) {
-      this.authLink = JSON.parse(authtoken!)
-    } else {
       this.authLink = new AuthLink();
+      this.user = new User();
+    } else {
+      this.authLink = JSON.parse(authtoken!)
+      this.user = jwtHelpService.decodeToken(this.authLink.idToken as string)
     }
   }
 
@@ -45,8 +55,6 @@ export class AuthService {
         // 一度サインアウト状態にする
         this.signout();
         let res = JSON.parse(response)
-        console.log(res)
-        console.log(res.data)
         localStorage.setItem(this.localStorageKey, JSON.stringify(res.data))
         return response;
       })
@@ -57,12 +65,10 @@ export class AuthService {
     Token valid
   */
   isAuthenticated(): boolean {
-    console.log('isAuthenticated')
     if (!this.authLink) {
       return false;
     }
-
-    return moment().isBefore(moment.unix(this.authLink.exp))
+    return moment().isBefore(moment.unix(this.user.exp))
   }
 
   signout(): void {
