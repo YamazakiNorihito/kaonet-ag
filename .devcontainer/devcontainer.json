@@ -7,7 +7,6 @@
 	// Update the 'dockerComposeFile' list if you have more compose files or use different names.
 	// The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
 	"dockerComposeFile": [
-		"../docker-compose.yml",
 		"docker-compose.yml"
 	],
 
@@ -34,10 +33,10 @@
 		"leizongmin.node-module-intellisense",
 		"esbenp.prettier-vscode"
 		
-	]
+	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	"forwardPorts": [4200, 3001],
 
 	// Uncomment the next line if you want start specific services in your Docker Compose config.
 	// "runServices": [],

@@ -13,9 +13,11 @@ export class SigninComponent implements OnInit, OnDestroy {
 
   isCollapsed: boolean = false;
 
-  focus: boolean = false;
   focus1: boolean = false;
   focus2: boolean = false;
+
+  valid: boolean = false;
+
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -94,15 +96,16 @@ export class SigninComponent implements OnInit, OnDestroy {
 
   signin(form: NgForm): void {
     console.log('sigin component S')
-
+    this.valid = false;
     let { email, passwd } = form.value;
     this.authService.signin(email, passwd).subscribe(
       result => {
         // Handle result
-        console.log(result);
-        this.router.navigateByUrl('/');
+        //console.log(result);
+        //this.router.navigateByUrl('/');
       },
       error => {
+        this.valid = true;
         console.log(error)
       },
       () => {

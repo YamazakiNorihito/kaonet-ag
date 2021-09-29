@@ -16,6 +16,9 @@ import { NormalnavComponent } from './header/normalnav/normalnav.component';
 import { HeaderModule } from './header/header.module';
 import { FooterModule } from './footer/footer.module'
 
+import { AuthguardGuard } from './guards/authguard.guard'
+import { AuthService } from './services/auth.service';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -33,7 +36,10 @@ import { FooterModule } from './footer/footer.module'
     FooterModule,
     //SharedModule,
   ],
-  providers: [],
+  providers: [
+    AuthguardGuard,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
