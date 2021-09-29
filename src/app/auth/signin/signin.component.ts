@@ -102,7 +102,7 @@ export class SigninComponent implements OnInit, OnDestroy {
       result => {
         // Handle result
         //console.log(result);
-        //this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/');
       },
       error => {
         this.valid = true;

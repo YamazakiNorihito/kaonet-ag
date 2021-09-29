@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 import * as moment from 'moment';
-
+import { environment } from '../../environments/environment'
 
 class AuthLink {
   name: String = ''
@@ -22,7 +22,8 @@ export class AuthService {
 
   private readonly localStorageKey: string = 'kaonet-auth'
 
-  private apiurl: string = 'http://localhost:49153/'
+  private apiurl: string = environment.apiUrl
+  //private apiurl: string = '/api/'
 
   constructor(private http: HttpClient, private router: Router) {
     let authtoken = localStorage.getItem(this.localStorageKey);
