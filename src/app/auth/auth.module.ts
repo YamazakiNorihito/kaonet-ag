@@ -7,10 +7,11 @@ import { SharedModule } from '../shared/shared.module'
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
-  declarations: [SigninComponent],
+  declarations: [SigninComponent, SignupComponent],
   imports: [
     FormsModule,
     CommonModule,
