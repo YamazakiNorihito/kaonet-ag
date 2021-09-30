@@ -8,10 +8,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
+import { LayoutSignComponent } from './layout-sign/layout-sign.component';
 
 
 @NgModule({
-  declarations: [SigninComponent, SignupComponent],
+  declarations: [SigninComponent, SignupComponent, LayoutSignComponent],
   imports: [
     FormsModule,
     CommonModule,

@@ -1,70 +1,49 @@
-<div class="page-header">
-  <div class="page-header-image"></div>
-  <div class="content">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-5 col-md-6 offset-lg-0 offset-md-3">
-          <div class="square square-7" id="square7"></div>
-          <div class="square square-8" id="square8"></div>
-          <div class="card card-register">
-            <div class="card-header">
-              <img alt="Card image" class="card-img" src="assets/img/square1-red.png" />
+<div class="card-header">
+  <img alt="Card image" class="card-img" src="assets/img/square1-red.png" />
 
-              <h4 class="card-title">SignUp</h4>
-            </div>
-            <div class="card-body">
-              <ng-template [ngIf]="valid === true">
-                <p class="text-danger">
-                  ユーザー認証に失敗しました
-                </p>
-              </ng-template>
-              <form class="form" #form="ngForm" (ngSubmit)="signup(form)">
-                <div class="input-group"
-                  [ngClass]="{ 'input-group-focus': (focus1 === true && valid === false), 'has-danger': valid === true }">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">
-                      <i class="tim-icons icon-email-85"> </i>
-                    </div>
-                  </div>
-                  <input ngModel name="email" class="form-control" placeholder="Email" type="email" maxlength="256"
-                    (focus)="focus1 = true" (blur)="focus1 = false"
-                    [ngClass]="{'form-control-danger': valid === true }" />
-                </div>
-                <div class="input-group"
-                  [ngClass]="{ 'input-group-focus': (focus2 === true && valid === false), 'has-danger': valid === true }">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">
-                      <i class="tim-icons icon-lock-circle"> </i>
-                    </div>
-                  </div>
-                  <input ngModel name="passwd" class="form-control" placeholder="Password" type="password"
-                    (focus)="focus2 = true" (blur)="focus2 = false"
-                    [ngClass]="{'form-control-danger': valid === true }" />
-                </div>
-                <div class="form-check text-left">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" />
-
-                    <span class="form-check-sign"> </span> I agree to the
-                    <a href="javascript:void(0)"> terms and conditions </a> .
-                  </label>
-                </div>
-                <div class="card-footer">
-                  <button class="btn btn-lg tn-primary btn-warning" type="submit">
-                    Get Started
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
+  <h4 class="card-title">signUp</h4>
+</div>
+<div class="card-body">
+  <ng-template [ngIf]="valid === true">
+    <p class="text-danger">
+      ユーザー認証に失敗しました
+    </p>
+  </ng-template>
+  <form class="form" #form="ngForm" (ngSubmit)="signup(form)">
+    <div class="input-group"
+      [ngClass]="{ 'input-group-focus': (focus1 === true && valid === false), 'has-danger': valid === true }">
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <i class="tim-icons icon-email-85"> </i>
         </div>
       </div>
-      <div class="register-bg"></div>
-      <div class="square square-1" id="square1"></div>
-      <div class="square square-2" id="square2"></div>
-      <div class="square square-3" id="square3"></div>
-      <div class="square square-4" id="square4"></div>
-      <div class="square square-5" id="square5"></div>
-      <div class="square square-6" id="square6"></div>
+      <input ngModel name="email" class="form-control" placeholder="Email" type="email" maxlength="256"
+        (focus)="focus1 = true" (blur)="focus1 = false" [ngClass]="{'form-control-danger': valid === true }" />
     </div>
-  </div>
+    <div class="input-group"
+      [ngClass]="{ 'input-group-focus': (focus2 === true && valid === false), 'has-danger': valid === true }">
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <i class="tim-icons icon-lock-circle"> </i>
+        </div>
+      </div>
+      <input ngModel name="passwd" class="form-control" placeholder="Password" type="password" (focus)="focus2 = true"
+        (blur)="focus2 = false" [ngClass]="{'form-control-danger': valid === true }" />
+    </div>
+    <div class="form-check text-left">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" />
+
+        <span class="form-check-sign"> </span> I agree to the
+        <a href="javascript:void(0)"> terms and conditions </a> .
+      </label>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-lg tn-primary btn-warning" type="submit">
+        Get Started
+      </button>
+      <button type="button" class="btn btn-link mr-1 btn-neutral" [routerLink]="['/auth/signin']">SignIn</button>
+    </div>
+  </form>
+
+</div>

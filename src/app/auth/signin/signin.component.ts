@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { Component, OnInit, OnDestroy, EventEmitter, Output } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -19,19 +19,20 @@ export class SigninComponent implements OnInit, OnDestroy {
   valid: boolean = false;
 
 
-  constructor(private authService: AuthService, private router: Router) { }
+  @Output() newItemEvent = new EventEmitter<string>();
 
+  constructor(private authService: AuthService, private router: Router) {
+  }
+
+  addNewItem(value: string) {
+    this.newItemEvent.emit(value);
+  }
   ngOnInit(): void {
   }
 
   ngOnDestroy() {
     var body = document.getElementsByTagName("body")[0];
     body.classList.remove("register-page");
-  }
-
-  @HostListener("document:mousemove", ["$event"])
-  onMouseMove(e: MouseEvent) {
-
   }
 
   signin(form: NgForm): void {
