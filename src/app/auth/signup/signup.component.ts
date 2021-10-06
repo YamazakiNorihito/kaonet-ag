@@ -11,6 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class SignupComponent implements OnInit, OnDestroy {
 
+  isTermClick: boolean = false;
   isCollapsed: boolean = false;
 
   focus: boolean = false;
@@ -51,5 +52,9 @@ export class SignupComponent implements OnInit, OnDestroy {
   valid_clear(): void {
     this.valid_msg_email = '';
     this.valid_msg_passwd = '';
+  }
+
+  onClickTerm(): void {
+    this.isTermClick = !this.isTermClick;
   }
 }

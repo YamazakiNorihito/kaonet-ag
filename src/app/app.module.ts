@@ -18,6 +18,7 @@ import { FooterModule } from './footer/footer.module'
 
 import { AuthguardGuard } from './guards/authguard.guard'
 import { AuthService } from './services/auth.service';
+import { PolicyModule } from './policy/policy.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AuthService } from './services/auth.service';
     IndexModule,
     HeaderModule,
     FooterModule,
+    PolicyModule,
     //SharedModule,
   ],
   providers: [
