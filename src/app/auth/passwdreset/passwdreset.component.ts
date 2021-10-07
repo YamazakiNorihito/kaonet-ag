@@ -5,30 +5,23 @@ import { NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss']
+  selector: 'app-passwdreset',
+  templateUrl: './passwdreset.component.html',
+  styleUrls: ['./passwdreset.component.scss']
 })
-export class SigninComponent implements OnInit, OnDestroy {
+export class PasswdresetComponent implements OnInit, OnDestroy {
 
-  isCollapsed: boolean = false;
-
+  emailText: string = '';
+  isSend: boolean = false;
   focus1: boolean = false;
-  focus2: boolean = false;
-
   valid: boolean = false;
 
   email: string = '';
   passwd: string = '';
 
-  @Output() newItemEvent = new EventEmitter<string>();
-
   constructor(private authService: AuthService, private router: Router) {
   }
 
-  addNewItem(value: string) {
-    this.newItemEvent.emit(value);
-  }
   ngOnInit(): void {
   }
 
@@ -37,15 +30,16 @@ export class SigninComponent implements OnInit, OnDestroy {
     body.classList.remove("register-page");
   }
 
-  signin(form: NgForm): void {
+  reset(form: NgForm): void {
     this.valid = false;
-    let { email, passwd } = form.value;
-    this.authService.signin(email, passwd).subscribe(
+    let { emailText } = form.value;
+    this.authService.pwdreset(emailText).subscribe(
       result => {
-        this.router.navigateByUrl('/');
+        this.isSend = true;
       },
       error => {
         this.valid = true;
+        this.isSend = false;
         console.log(error)
       },
       () => {
@@ -54,5 +48,4 @@ export class SigninComponent implements OnInit, OnDestroy {
       }
     )
   }
-
 }

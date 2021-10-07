@@ -9,10 +9,11 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
 import { LayoutSignComponent } from './layout-sign/layout-sign.component';
+import { PasswdresetComponent } from './passwdreset/passwdreset.component';
 
 
 @NgModule({
-  declarations: [SigninComponent, SignupComponent, LayoutSignComponent],
+  declarations: [SigninComponent, SignupComponent, LayoutSignComponent, PasswdresetComponent],
   imports: [
     FormsModule,
     CommonModule,

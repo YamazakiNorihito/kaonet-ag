@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpParams, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
@@ -13,6 +13,7 @@ class AuthLink {
   idToken: String = ''
   refreshToken: String = ''
   expiresIn: number = 0
+  localId: String = ''
 }
 
 class User {
@@ -74,5 +75,20 @@ export class AuthService {
   signout(): void {
     localStorage.removeItem(this.localStorageKey);
     this.authLink = new AuthLink();
+  }
+
+  /*
+    pwdreset
+  */
+  pwdreset(email: string): Observable<any> {
+    let params = new HttpParams();
+    params = params.append('email', email);
+    return this.http.get(`${this.apiurl}auth/pwdreset`, { params: params }).pipe(
+      map(response => JSON.stringify(response)),
+      map((response) => {
+        this.signout();
+        return response;
+      })
+    )
   }
 }

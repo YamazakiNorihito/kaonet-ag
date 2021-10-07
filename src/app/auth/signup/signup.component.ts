@@ -21,6 +21,9 @@ export class SignupComponent implements OnInit, OnDestroy {
   valid_msg_email: String = '';
   valid_msg_passwd: String = '';
 
+  email: string = '';
+  passwd: string = '';
+
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
