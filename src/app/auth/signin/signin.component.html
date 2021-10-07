@@ -34,10 +34,18 @@
         [ngClass]="{'form-control-danger': valid === true }" />
     </div>
     <div class="card-footer">
-      <button class="btn btn-lg tn-primary btn-warning" type="submit" [disabled]="!passwd || !email">
-        Let's Signin
-      </button>
-      <button type="button" class="btn btn-link mr-1 btn-neutral" [routerLink]="['/auth/signup']">SignUp</button>
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-lg tn-primary btn-warning" type="submit" [disabled]="!passwd || !email">
+            Let's Signin
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <button type="button" class="btn btn-link mr-1 btn-neutral" [routerLink]="['/auth/signup']">SignUp</button>
+        <button type="button" class="btn btn-link mr-1 btn-neutral" [routerLink]="['/auth/passwdreset']"> Forgot
+          password?</button>
+      </div>
     </div>
   </form>
 </div>
